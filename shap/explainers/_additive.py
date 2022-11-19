@@ -61,7 +61,7 @@ class Additive(Explainer):
             masks[i,i-1] = False
         outputs = fm(masks)
         self._zero_offset = outputs[0]
-        self._input_offsets = np.zeros(masker.shape[1])
+        self._input_offsets = np.zeros((masker.shape[1],outputs.shape[1]))
         for i in range(1, self.masker.shape[1]+1):
             self._input_offsets[i-1] = outputs[i] - self._zero_offset
 
